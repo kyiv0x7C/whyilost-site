@@ -4,7 +4,7 @@
    No script, no third-party request: Oswald is the app's own file, the rest is the system's fonts. */
 @font-face {
   font-family: Oswald; font-weight: 200 700; font-style: normal; font-display: swap;
-  src: url(/fonts/Oswald-Variable.ttf) format("truetype");
+  src: url(/fonts/Oswald-Variable.woff) format("woff");
 }
 :root {
   --body: #D9D9D4; --module: #EDEDEA; --keycap: #F7F7F4; --ink: #0E0E0E; --ink-2: #4F4F4B;
