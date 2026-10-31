@@ -5,18 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About · Why I Lost</title>
 <meta name="description" content="Why I Lost, a turn-based life and money simulator for iPhone, made by Dmytro Lyshtva.">
-<link rel="stylesheet" href="/style.css">
+<meta name="theme-color" content="#D9D9D4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0C0C" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="/img/icon-192.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Oswald-Variable.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/pult.css">
 <link rel="alternate" hreflang="en" href="https://whyilost.app/en/about/">
 <link rel="alternate" hreflang="uk" href="https://whyilost.app/uk/about/">
 <link rel="alternate" hreflang="es" href="https://whyilost.app/es/about/">
 <link rel="alternate" hreflang="x-default" href="https://whyilost.app/en/about/">
 </head>
 <body>
+<div class="page">
 <header class="top">
-<a class="brand" href="/">Why I Lost</a>
-<nav class="langs" aria-label="Language"><a href="/en/about/" lang="en" hreflang="en" aria-current="page">English</a> · <a href="/uk/about/" lang="uk" hreflang="uk">Українська</a> · <a href="/es/about/" lang="es" hreflang="es">Español</a></nav>
+<a class="brand" href="/en/"><span class="tile"><img src="/img/icon-96.png" alt="" width="44" height="44"></span><span>Why I Lost</span></a>
+<nav class="keys" aria-label="Language">
+<a class="key" href="/uk/about/" lang="uk" hreflang="uk" aria-label="Українська">УКР</a>
+<a class="key" href="/en/about/" lang="en" hreflang="en" aria-label="English" aria-current="page">EN</a>
+<a class="key" href="/es/about/" lang="es" hreflang="es" aria-label="Español">ES</a>
+</nav>
 </header>
-<main>
+<main class="sheet-wrap">
+<div class="receipt"><div class="paper sheet">
 <h1>About</h1>
 <p>Why I Lost is a turn-based life and money simulator for iPhone. One turn is one month. You choose a dream to chase, answer the cards each month brings, and spend money, time and energy. When the run ends, a report says why it was won or lost.</p>
 <h2>What is free, and what the full game adds</h2>
@@ -219,11 +230,12 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 </details>
+</div></div>
 </main>
-<footer>
-<nav aria-label="Pages"><a href="/en/privacy/">Privacy</a> · <a href="/en/support/">Support</a> · <a href="/en/about/" aria-current="page">About</a></nav>
-<p>support@whyilost.app</p>
-<p>© 2026 Dmytro Lyshtva</p>
+<footer class="foot">
+<nav aria-label="Pages"><a href="/en/privacy/">Privacy</a><a href="/en/support/">Support</a><a href="/en/about/" aria-current="page">About</a></nav>
+<p>support@whyilost.app<br>© 2026 Dmytro Lyshtva</p>
 </footer>
+</div>
 </body>
 </html>

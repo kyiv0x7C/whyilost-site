@@ -1,0 +1,168 @@
+/* whyilost.app's landing pages, root and About in the game's own look (story 105, ADR-0064 amendment, docs/DESIGN.md §19).
+   Пульт's tokens (docs/DESIGN.md §13.1), light and dark by the visitor's own setting. The idea is B · Чек: the pitch is
+   printed as the month's receipt, and the screens are taped on. The plain pages (privacy, support) keep style.css.
+   No script, no third-party request: Oswald is the app's own file, the rest is the system's fonts. */
+@font-face {
+  font-family: Oswald; font-weight: 200 700; font-style: normal; font-display: swap;
+  src: url(/fonts/Oswald-Variable.ttf) format("truetype");
+}
+:root {
+  --body: #D9D9D4; --module: #EDEDEA; --keycap: #F7F7F4; --ink: #0E0E0E; --ink-2: #4F4F4B;
+  --signal: #FF5A1F; --stamp: #A62B23; --tape: #141414; --on-tape: #F2F2EE;
+  --paper: #FFFEFA; --paper-ink: #141414; --paper-ink-2: #55524B; --illustration: #F4F1EA;
+  --hair: rgba(14, 14, 14, .18); --lift: rgba(14, 14, 14, .18); --kraft: rgba(230, 211, 163, .88);
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --oswald: Oswald, "Arial Narrow", Impact, sans-serif;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body: #0C0C0C; --module: #171717; --keycap: #232323; --ink: #EDEDED; --ink-2: #9A9A96;
+    --signal: #FF6B33; --stamp: #FF6A5E; --tape: #EDEDED; --on-tape: #0C0C0C;
+    --paper: #1E1D1B; --paper-ink: #F0ECE3; --paper-ink-2: #A9A398;
+    --hair: rgba(237, 237, 237, .16); --lift: rgba(0, 0, 0, .55); --kraft: rgba(217, 194, 139, .9);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--body); color: var(--ink); overflow-x: clip;
+  font: 16px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--ink); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+img { max-width: 100%; }
+.page { max-width: 1200px; margin: 0 auto; padding: 14px 16px 0; }
+
+/* the header: the icon, the name, and the language keys */
+.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.brand {
+  display: flex; align-items: center; gap: 10px; margin-right: auto; text-decoration: none;
+  font: 700 22px/1 var(--oswald); letter-spacing: .03em; text-transform: uppercase;
+}
+.tile {
+  width: 44px; height: 44px; flex: none; border: 2px solid var(--ink); border-radius: 11px;
+  background: var(--illustration); overflow: hidden;
+}
+.tile img { display: block; width: 100%; height: 100%; }
+.keys { display: flex; gap: 8px; }
+.key {
+  position: relative; display: flex; align-items: center; height: 38px; padding: 0 11px;
+  border: 2px solid var(--ink); border-radius: 8px; background: var(--keycap); color: var(--ink);
+  box-shadow: 0 3px 0 var(--ink); text-decoration: none;
+  font: 800 11px/1 var(--mono); letter-spacing: .08em;
+}
+.key::after { content: ""; position: absolute; inset: -4px; }
+.key[aria-current] { background: var(--ink); color: var(--keycap); }
+.key:active { transform: translateY(3px); box-shadow: none; }
+
+/* the receipt */
+.hero { margin-top: 22px; }
+.receipt-col { max-width: 520px; margin-inline: auto; }
+.receipt { filter: drop-shadow(0 6px 0 var(--lift)); }
+.paper {
+  position: relative; background: var(--paper); color: var(--paper-ink); padding: 26px 20px 38px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 16px 8px repeat-x,
+    linear-gradient(#000 0 0) top / 100% calc(100% - 8px) no-repeat;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 16px 8px repeat-x,
+    linear-gradient(#000 0 0) top / 100% calc(100% - 8px) no-repeat;
+}
+.receipt-no { margin: 0; text-align: center; font: 400 12px/1.4 var(--mono); letter-spacing: .14em; color: var(--paper-ink-2); }
+.receipt h1 {
+  margin: 10px 0 0; text-align: center; font: 700 30px/1.08 var(--oswald); letter-spacing: .02em;
+  text-transform: uppercase; text-wrap: balance;
+}
+.rule { margin: 16px 0 4px; border: 0; border-top: 2px dashed var(--paper-ink-2); }
+.pitch { margin: 10px 0 0; font-size: 15px; line-height: 1.45; }
+.lines { margin: 0; }
+.row { display: flex; align-items: baseline; gap: 6px; margin-top: 9px; font: 500 13.5px/1.35 var(--mono); }
+.row dt, .row dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.row i { flex: 1 1 12px; min-width: 12px; border-bottom: 2px dotted var(--paper-ink-2); }
+.row.total { font-weight: 800; }
+.stamp {
+  display: block; width: fit-content; margin: 14px 4px -6px auto; padding: 3px 9px; transform: rotate(-9deg);
+  border: 3px solid var(--stamp); border-radius: 4px; color: var(--stamp);
+  font: 700 15px/1.2 var(--oswald); letter-spacing: .08em; text-transform: uppercase;
+}
+
+/* the store element: Apple's badge, or the dated line before it (scripts/site-state.sh writes the block) */
+.store { display: flex; justify-content: center; padding: 26px 13px 13px; }
+.badge { display: block; line-height: 0; border-radius: 10px; }
+.badge img { display: block; height: 52px; width: auto; }
+.soon {
+  margin: 0; padding: 10px 14px; border: 2px dashed var(--ink-2); border-radius: 10px; text-align: center;
+  font: 700 13px/1.35 var(--mono); letter-spacing: .04em; color: var(--ink);
+}
+
+/* the screens, taped on */
+.collage { display: none; }
+.shots { margin-top: 64px; }
+.cards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.card {
+  position: relative; width: min(236px, 74%); padding: 8px; background: var(--paper);
+  box-shadow: 0 5px 0 var(--lift);
+}
+.card::before {
+  content: ""; position: absolute; left: 50%; top: -10px; width: 86px; height: 22px; margin-left: -43px;
+  background: var(--kraft); transform: rotate(2deg);
+}
+.card img { display: block; width: 100%; height: auto; }
+.cards li:nth-child(odd) { align-self: flex-start; transform: rotate(-1.6deg); }
+.cards li:nth-child(even) { align-self: flex-end; transform: rotate(1.4deg); }
+.cards li + li { margin-top: -90px; }
+.cards li:nth-child(odd) .card::before { transform: rotate(3deg); }
+.cards li:nth-child(even) .card::before { transform: rotate(-3deg); }
+@media (min-width: 600px) {
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 24px; }
+  .cards li, .cards li + li { margin-top: 0; align-self: auto; }
+  .card { width: 100%; }
+}
+
+/* the footer */
+.foot { margin-top: 64px; padding: 20px 0 36px; border-top: 2px solid var(--hair); color: var(--ink-2); font-size: 14px; line-height: 1.6; }
+.foot p { margin: 8px 0 0; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.foot nav a { color: var(--ink); }
+.foot nav a[aria-current] { font-weight: 700; text-decoration: none; }
+.credit { font-size: 12.5px; }
+
+/* About: the same paper, the same header and footer */
+.sheet h1 { margin: 0; font: 700 30px/1.08 var(--oswald); letter-spacing: .02em; text-transform: uppercase; }
+.sheet h2 { margin: 1.6em 0 .3em; font: 700 17px/1.25 var(--oswald); letter-spacing: .04em; text-transform: uppercase; }
+.sheet p { margin: .5em 0; }
+.sheet details { border: 2px solid var(--paper-ink-2); border-radius: 6px; padding: 8px 12px; margin: 12px 0; }
+.sheet summary { cursor: pointer; font-family: var(--mono); font-size: 13px; }
+.sheet pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 12.5px/1.5 var(--mono); color: var(--paper-ink-2); }
+.sheet a { color: var(--paper-ink); }
+.sheet-wrap { margin-top: 22px; max-width: 720px; margin-inline: auto; }
+
+/* the root: three keys */
+.choose { margin-top: 22px; max-width: 520px; margin-inline: auto; }
+.choose .paper { padding-bottom: 34px; }
+.choose h1 { margin-bottom: 4px; }
+.choose ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 18px; }
+.choose li { display: grid; gap: 6px; justify-items: start; }
+.choose .key { height: 46px; padding: 0 16px; font-size: 14px; }
+.choose li span { font-size: 14.5px; line-height: 1.4; }
+
+@media (min-width: 1100px) {
+  .page { padding: 22px 40px 0; }
+  .hero { display: flex; gap: 40px; align-items: flex-start; margin-top: 26px; }
+  .receipt-col { flex: none; width: 500px; max-width: none; margin: 0; }
+  .receipt h1 { font-size: 40px; }
+  .receipt .paper { padding: 28px 28px 40px; }
+  .pitch { font-size: 17px; }
+  .row { font-size: 15px; }
+  .collage { display: block; position: relative; flex: 1 1 auto; height: 720px; min-width: 0; }
+  .collage .card { position: absolute; width: 54%; }
+  .collage .card.a { left: 0; top: 20px; transform: rotate(-2.5deg); }
+  .collage .card.b { left: 48%; top: 120px; width: 50%; transform: rotate(3deg); }
+  .shots { margin-top: 90px; }
+  .cards { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; align-items: start; }
+  .cards li:nth-child(even) { margin-top: 40px; }
+  .cards li:nth-child(1) { transform: rotate(-1.6deg); } .cards li:nth-child(2) { transform: rotate(1.4deg); }
+  .cards li:nth-child(3) { transform: rotate(-1.2deg); } .cards li:nth-child(4) { transform: rotate(1.8deg); }
+  .cards li:nth-child(5) { transform: rotate(-1.4deg); } .cards li:nth-child(6) { transform: rotate(1.2deg); }
+  .foot { margin-top: 90px; }
+}

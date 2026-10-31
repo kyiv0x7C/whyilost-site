@@ -5,18 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Про гру · Why I Lost</title>
 <meta name="description" content="Why I Lost — покрокова симуляція життя й грошей для iPhone від незалежного розробника Dmytro Lyshtva.">
-<link rel="stylesheet" href="/style.css">
+<meta name="theme-color" content="#D9D9D4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0C0C" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="/img/icon-192.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Oswald-Variable.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/pult.css">
 <link rel="alternate" hreflang="en" href="https://whyilost.app/en/about/">
 <link rel="alternate" hreflang="uk" href="https://whyilost.app/uk/about/">
 <link rel="alternate" hreflang="es" href="https://whyilost.app/es/about/">
 <link rel="alternate" hreflang="x-default" href="https://whyilost.app/en/about/">
 </head>
 <body>
+<div class="page">
 <header class="top">
-<a class="brand" href="/">Why I Lost</a>
-<nav class="langs" aria-label="Мова"><a href="/en/about/" lang="en" hreflang="en">English</a> · <a href="/uk/about/" lang="uk" hreflang="uk" aria-current="page">Українська</a> · <a href="/es/about/" lang="es" hreflang="es">Español</a></nav>
+<a class="brand" href="/uk/"><span class="tile"><img src="/img/icon-96.png" alt="" width="44" height="44"></span><span>Why I Lost</span></a>
+<nav class="keys" aria-label="Мова">
+<a class="key" href="/uk/about/" lang="uk" hreflang="uk" aria-label="Українська" aria-current="page">УКР</a>
+<a class="key" href="/en/about/" lang="en" hreflang="en" aria-label="English">EN</a>
+<a class="key" href="/es/about/" lang="es" hreflang="es" aria-label="Español">ES</a>
+</nav>
 </header>
-<main>
+<main class="sheet-wrap">
+<div class="receipt"><div class="paper sheet">
 <h1>Про гру</h1>
 <p>Why I Lost — покрокова симуляція життя й грошей для iPhone. Один хід — один місяць. Ви обираєте мрію, відповідаєте на картки, які приносить кожен місяць, і витрачаєте гроші, час та енергію. Коли забіг закінчується, звіт пояснює, чому його виграно чи програно.</p>
 <h2>Що безкоштовно, а що відкриває повна гра</h2>
@@ -219,11 +230,12 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 </details>
+</div></div>
 </main>
-<footer>
-<nav aria-label="Сторінки"><a href="/uk/privacy/">Конфіденційність</a> · <a href="/uk/support/">Підтримка</a> · <a href="/uk/about/" aria-current="page">Про гру</a></nav>
-<p>support@whyilost.app</p>
-<p>© 2026 Dmytro Lyshtva</p>
+<footer class="foot">
+<nav aria-label="Сторінки"><a href="/uk/privacy/">Конфіденційність</a><a href="/uk/support/">Підтримка</a><a href="/uk/about/" aria-current="page">Про гру</a></nav>
+<p>support@whyilost.app<br>© 2026 Dmytro Lyshtva</p>
 </footer>
+</div>
 </body>
 </html>
